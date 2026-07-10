@@ -1,0 +1,318 @@
+:root {
+  --surface-soft: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(8, 9, 15, 0.82);
+}
+
+.hero-section {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 40px;
+  padding: 140px 8% 80px;
+  position: relative;
+}
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding-top: 140px;
+    gap: 50px;
+  }
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 12% 10% auto auto;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.18), transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.hero-copy {
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 999px;
+  color: var(--neon-cyan);
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 22px;
+}
+
+.hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: 0.12em;
+  color: white;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.hero-title::before,
+.hero-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-title::before {
+  color: var(--neon-magenta);
+  animation: cyberGlitchRed 5s infinite linear;
+}
+
+.hero-title::after {
+  color: var(--neon-cyan);
+  animation: cyberGlitchBlue 4.2s infinite linear;
+}
+
+.hero-title:hover::before {
+  animation: cyberGlitchRed 0.3s infinite linear;
+}
+
+.hero-title:hover::after {
+  animation: cyberGlitchBlue 0.2s infinite linear;
+}
+
+.hero-subtitle {
+  font-size: 1.06rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin-bottom: 28px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 16px;
+  max-width: 560px;
+}
+
+.hero-stat-card {
+  background: var(--surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.hero-stat-card strong {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.hero-stat-card span {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.info-card h3 {
+  font-family: var(--font-accent);
+  margin-bottom: 10px;
+  color: white;
+}
+
+.info-card p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.menu-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.menu-pill {
+  border: 1px solid rgba(0, 243, 255, 0.18);
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-family: var(--font-accent);
+}
+
+/* Unified menu-card styling has been moved to components.css to resolve style collisions */
+
+.reservation-card {
+  border-radius: 24px;
+  padding: 30px;
+}
+
+.site-footer {
+  padding: 24px 8% 40px;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+  .hero-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    padding-top: 120px;
+  }
+
+  .menu-card {
+    min-height: auto;
+  }
+}
+
+/* Featured Signature Dish Showcase styling */
+.hero-dish-showcase {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    perspective: 1000px;
+}
+
+.hero-dish-card {
+    background: linear-gradient(135deg, rgba(14, 14, 23, 0.75), rgba(8, 9, 15, 0.95));
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    border-radius: 18px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+    transform: rotateY(-8deg) rotateX(4deg);
+    transform-style: preserve-3d;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 243, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hero-dish-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -30px -30px auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 0, 85, 0.18), transparent 70%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.hero-dish-card:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+    border-color: rgba(255, 0, 85, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 0, 85, 0.18);
+}
+
+.hero-dish-card:hover::after {
+    transform: scale(1.2);
+    background: radial-gradient(circle, rgba(255, 0, 85, 0.28), transparent 70%);
+}
+
+.card-badge-glow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 0, 85, 0.25);
+    border-radius: 999px;
+    color: var(--neon-magenta);
+    font-family: var(--font-accent);
+    font-size: 0.72rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.1);
+}
+
+.hero-dish-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hero-dish-category {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--neon-cyan);
+    font-family: var(--font-accent);
+}
+
+.hero-dish-name {
+    font-family: var(--font-accent);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.35;
+}
+
+.hero-dish-desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.hero-dish-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 16px;
+}
+
+.hero-dish-price {
+    color: var(--neon-magenta);
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+

@@ -1,0 +1,114 @@
+:root {
+    --bg-main: #060609;
+    --bg-surface: rgba(14, 14, 23, 0.45);
+    --border-color: rgba(0, 243, 255, 0.15);
+    --border-hover: rgba(255, 0, 85, 0.4);
+    
+    --neon-cyan: #00f3ff;
+    --neon-magenta: #ff0055;
+    --neon-amber: #ffaa00;
+    
+    --font-head: 'Syncopate', sans-serif;
+    --font-accent: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --text-primary: #f0f2f5;
+    --text-muted: #7e8494;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body:not(.use-system-cursor),
+body:not(.use-system-cursor) * {
+    cursor: none;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 243, 255, 0.2);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 243, 255, 0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 0, 85, 0.4);
+    box-shadow: 0 0 10px var(--neon-magenta);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Background Structural Matrix */
+.dynamic-ambient-grid {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Intelligent Custom Cursor Artifact */
+.cursor-glow {
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate3d(0, 0, 0) translate(-50%, -50%);
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    box-shadow: 0 0 18px rgba(255,255,255,0.12);
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Viewport Layout Patterns */
+.viewport-section {
+    padding: 120px 8% 80px;
+    min-height: 100vh;
+}
+.alternate-bg {
+    background: rgba(10, 10, 18, 0.8);
+    border-top: 1px solid var(--border-color);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section-title {
+    font-family: var(--font-head);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: white;
+}
+.section-subtitle {
+    font-family: var(--font-accent);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}

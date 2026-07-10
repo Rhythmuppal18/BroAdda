@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BroAdda is a modern cyber-bistro experience featuring signature burgers, gourmet mains, refreshing beverages, and a polished digital reservation flow.">
+    <meta name="keywords" content="BroAdda, cyber bistro, modern restaurant, burgers, Indian food, Asian food, digital menu, reservations">
+    <meta name="author" content="BroAdda">
+    <meta property="og:title" content="BroAdda | Modern Cyber Bistro Experience">
+    <meta property="og:description" content="Discover a premium food experience with curated cuisine categories, a sleek digital menu, and effortless online reservations.">
+    <meta property="og:type" content="website">
+    <title>BroAdda | Modern Cyber Bistro Experience</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/experience.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="cyber-dark">
+
+    <div class="dynamic-ambient-grid"></div>
+    <div class="cursor-glow" id="custom-cursor"></div>
+
+    <div id="toast-stack" class="toast-stack"></div>
+
+    <header class="site-header">
+        <a href="#" class="brand-identity cyber-glitch-text" data-text="BROADDA" aria-label="BroAdda home">
+            BRO<span class="neon-accent">ADDA</span>
+        </a>
+        <nav class="site-nav">
+            <a href="#home" class="nav-link active" data-nav>Home</a>
+            <a href="#menu" class="nav-link" data-nav>Digital Menu</a>
+            <a href="#about" class="nav-link" data-nav>Our Vibe</a>
+            <a href="#reservations" class="nav-link" data-nav>Secure Table</a>
+        </nav>
+        <div class="header-actions">
+            <button class="action-btn cart-trigger" onclick="uiController.toggleCart()" aria-label="Open Order Cart">
+                <i class="fa-solid fa-square-terminal"></i>
+                <span class="btn-label">Terminal</span>
+                <span id="global-cart-badge" class="badge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Premium Cyber Bistro</div>
+                <h1 id="hero-title" class="hero-title" data-text="BROADDA">BROADDA</h1>
+                <p class="hero-subtitle">BroAdda brings together fresh vegetarian comfort food, rich flavors, and a calm digital dining experience. From plant-forward burgers and creamy pastas to indulgent desserts and chilled beverages, every dish is made to feel warm, stylish, and memorable.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="cta-primary">Explore the Menu</a>
+                    <a href="#reservations" class="cta-secondary">Reserve Your Table</a>
+                </div>
+                <div class="hero-highlights" aria-label="BroAdda highlights">
+                    <div class="hero-stat-card">
+                        <strong>32+</strong>
+                        <span>Curated dishes</span>
+                    </div>
+                    <div class="hero-stat-card">
+                        <strong>6</strong>
+                        <span>Cuisine moods</span>
+                    </div>
+                    <div class="hero-stat-card">
+                        <strong>24/7</strong>
+                        <span>Digital service</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Signature Dish Showcase Card -->
+            <div class="hero-dish-showcase" aria-label="Featured Signature Dish">
+                <article class="hero-dish-card">
+                    <div class="hud-scanline"></div>
+                    <div class="hud-grid-overlay"></div>
+                    <div class="card-badge-glow"><i class="fa-solid fa-star"></i> CHEF'S SIGNATURE SPECIAL</div>
+                    <div class="hero-dish-header">
+                        <span class="hero-dish-category">Burgers</span>
+                        <h3 class="hero-dish-name">Smoky Truffle Burger</h3>
+                        <div class="card-tags-inline" style="justify-content: flex-start; margin-top: 6px;">
+                            <span class="card-tag">VEG</span>
+                            <span class="card-tag">CHEF PICK</span>
+                        </div>
+                    </div>
+                    <p class="hero-dish-desc">A hearty grilled patty layered with truffle mayo, caramelized onions, and crisp greens.</p>
+                    <div class="hero-dish-footer">
+                        <span class="hero-dish-price">₹360</span>
+                        <button class="action-btn" type="button" onclick="cartEngine.addItem('veg-01', this)">
+                            Quick Add
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="menu" class="viewport-section" aria-labelledby="menu-heading">
+            <div class="section-header">
+                <h2 id="menu-heading" class="section-title">Curated Menu Categories</h2>
+                <p class="section-subtitle">Choose a cuisine mood to discover the dishes that match your cravings.</p>
+            </div>
+
+            <div class="menu-summary" aria-label="Menu categories overview">
+                <span class="menu-pill">Veg Burgers</span>
+                <span class="menu-pill">Italian Comfort</span>
+                <span class="menu-pill">Asian Favorites</span>
+                <span class="menu-pill">Indian Classics</span>
+                <span class="menu-pill">Dessert Specials</span>
+                <span class="menu-pill">Crafted Beverages</span>
+            </div>
+
+            <div class="menu-search-container">
+                <input type="text" id="menu-search" class="menu-search-input" placeholder="Search dish, tags, details..." oninput="uiController.handleSearch(event)">
+                <i class="fa-solid fa-magnifying-glass menu-search-icon"></i>
+            </div>
+
+            <div class="category-filters" id="category-filters"></div>
+            <div class="menu-grid" id="menu-display"></div>
+        </section>
+
+        <section id="about" class="viewport-section" aria-labelledby="about-heading">
+            <div class="section-header">
+                <h2 id="about-heading" class="section-title">Why Guests Love BroAdda</h2>
+                <p class="section-subtitle">A balanced mix of atmosphere, flavor, and thoughtful service.</p>
+            </div>
+            <div class="story-grid">
+                <article class="info-card">
+                    <h3>Crafted for modern dining</h3>
+                    <p>Every dish is designed with rich texture, balanced spice, and a refined finish that feels both indulgent and approachable.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Fast and effortless ordering</h3>
+                    <p>The digital menu experience makes it simple to browse categories, build orders, and move from craving to checkout smoothly.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Made for memorable visits</h3>
+                    <p>Whether it is a casual evening out or a planned celebration, BroAdda creates a warm and polished setting worth returning to.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="reservations" class="viewport-section alternate-bg" aria-labelledby="reservation-heading">
+            <div class="section-header">
+                <h2 id="reservation-heading" class="section-title">Reserve Your Table</h2>
+                <p class="section-subtitle">Book a comfortable space for your next visit with a quick and seamless reservation flow.</p>
+            </div>
+            
+            <div class="reservation-card-wrapper reservation-shell">
+                <form id="reservation-form" class="reservation-form reservation-card" onsubmit="bookingEngine.handleSubmission(event)">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="book-name"><i class="fa-solid fa-user"></i> Your Name</label>
+                            <input type="text" required placeholder="Enter your name" id="book-name" name="book-name" autocomplete="name">
+                        </div>
+                        <div class="input-group">
+                            <label for="book-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                            <input type="email" required placeholder="name@example.com" id="book-email" name="book-email" autocomplete="email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="book-size"><i class="fa-solid fa-users"></i> Party Size</label>
+                            <select id="book-size" name="book-size" required>
+                                <option value="1 Guest">1 Guest</option>
+                                <option value="2 Guests" selected>2 Guests</option>
+                                <option value="3 Guests">3 Guests</option>
+                                <option value="4 Guests">4 Guests</option>
+                                <option value="5 Guests">5 Guests</option>
+                                <option value="6 Guests">6 Guests</option>
+                                <option value="7 Guests">7 Guests</option>
+                                <option value="8 Guests">8 Guests</option>
+                                <option value="9 Guests">9 Guests</option>
+                                <option value="10 Guests">10 Guests</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="book-time"><i class="fa-solid fa-calendar-day"></i> Preferred Time</label>
+                            <input type="datetime-local" required id="book-time" name="book-time">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-form-btn">Reserve Your Spot</button>
+                </form>
+                
+                <div id="active-bookings-section" class="active-bookings-wrap" style="display: none;">
+                    <h3 class="active-bookings-title"><i class="fa-solid fa-receipt"></i> Your Stored Allocations</h3>
+                    <div id="bookings-display" class="bookings-grid"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 BroAdda. Crafted for memorable dining and polished digital experiences.</p>
+        <p>Modern cuisine • Smart ordering • Effortless reservations</p>
+    </footer>
+
+    <aside class="order-panel" id="order-panel">
+        <div class="panel-header">
+            <h3><i class="fa-solid fa-square-terminal"></i> OPERATIONS_MANIFEST</h3>
+            <button class="close-panel-btn" onclick="uiController.toggleCart()" aria-label="Close Order Cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="order-items" id="order-items"></div>
+
+        <div class="terminal-sys-log" id="terminal-sys-log">
+            <div class="log-line info">[SYS] Bistro Operations Terminal v2.6.4 online.</div>
+            <div class="log-line">[SYS] Core encryption linked. Awaiting operations...</div>
+        </div>
+
+        <div class="panel-footer-calculation">
+            <div class="calc-row">
+                <span>Subtotal System Val:</span>
+                <span id="calc-subtotal">₹0.00</span>
+            </div>
+            <div class="calc-row highlighted">
+                <span>Total Charge Matrix:</span>
+                <span id="calc-total">₹0.00</span>
+            </div>
+            <button class="fire-checkout-btn" onclick="cartEngine.processCheckout()">
+                SECURE PAYMENT & CONFIRM <i class="fa-solid fa-bolt-lightning"></i>
+            </button>
+        </div>
+    </aside>
+
+    <script src="src/menu-data.js"></script>
+    <script src="src/cart-engine.js"></script>
+    <script src="src/app.js"></script>
+</body>
+</html>
